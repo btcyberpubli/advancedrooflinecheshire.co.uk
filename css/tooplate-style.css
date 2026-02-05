@@ -264,27 +264,18 @@ button:focus { outline: none; }
 }
 
 .tm-footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;	
-}
-
-.tm-footer {
     width: 100%;
     color: white;
     z-index: 1001;
     padding: 0 11px 12px;
+    position: relative;
+    bottom: auto;
+    left: auto;
 }
 
 .cd-full-width {
-	display: -ms-flexbox;
-	display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    -ms-flex-align: center;
-        align-items: center;
-    -ms-flex-pack: center;
-        justify-content: center;
+	display: block;
+	padding-bottom: 80px;
 }
 
 .cd-hero-slider p:last-child { margin-bottom: 0; }

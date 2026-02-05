@@ -98,17 +98,6 @@
             <ul class="cd-hero-slider">  <!-- autoplay -->
                 <!-- Pages loaded from seccion/ folder -->
             </ul> <!-- .cd-hero-slider -->
-            
-            <footer class="tm-footer">            
-                <p class="tm-copyright-text pull-xs-right">
-                    <strong>Advanced Roofline Cheshire</strong> | 
-                    Crewe: 38 Bleasedale Road, CW1 4PZ | 
-                    Nantwich: Unit 5, Oak Bank Business Centre, CW5 8AH |
-                    <a href="tel:07704710840" style="color: #fff;">07704 710840</a> / <a href="tel:01270780977" style="color: #fff;">01270 780977</a> |
-                    VAT: GB445525882 | 
-                    Copyright © <span class="tm-current-year">2026</span>
-                </p>
-            </footer>                    
         </div> <!-- .cd-hero -->        
 
         <!-- Preloader, https://ihatetomatoes.net/create-custom-preloading-screen/ -->
@@ -148,7 +137,14 @@
                 // Load each section
                 sections.forEach(function(section) {
                     $.get(section, function(data) {
-                        slider.append(data);
+                        // Extract the <li> element from the loaded content
+                        var liElement = $(data).filter('li').first();
+                        if(liElement.length) {
+                            slider.append(liElement);
+                        } else {
+                            // If no <li> found, wrap content in <li>
+                            slider.append('<li>' + data + '</li>');
+                        }
                     }).fail(function() {
                         console.log('Error loading: ' + section);
                     });
